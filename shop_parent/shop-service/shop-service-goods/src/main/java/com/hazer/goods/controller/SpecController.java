@@ -3,43 +3,43 @@ package com.hazer.goods.controller;
 import com.github.pagehelper.PageInfo;
 import com.hazer.goods.entity.Result;
 import com.hazer.goods.entity.StatusCode;
-import com.hazer.goods.pojo.Album;
-import com.hazer.goods.service.AlbumService;
+import com.hazer.goods.pojo.Spec;
+import com.hazer.goods.service.SpecService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 /**
- * @ClassName AlbumController
- * @Description 相册管理Controller
- * @Author Hazer
- * @Date 2020/3/6 17:40
+ * @ClassName: SpecController
+ * @description:
+ * @author: Hazer
+ * @create: 2020-03-07 00:30
  **/
 @RestController
-@RequestMapping("/album")
+@RequestMapping("/spec")
 @CrossOrigin
-public class AlbumController {
+public class SpecController {
 
     @Autowired
-    private AlbumService albumService;
+    private SpecService specService;
 
     /***
-     * Album分页条件搜索实现
-     * @param album
+     * Spec分页条件搜索实现
+     * @param spec
      * @param page
      * @param size
      * @return
      */
     @PostMapping(value = "/search/{page}/{size}" )
-    public Result<PageInfo> findPage(@RequestBody(required = false) Album album, @PathVariable  int page, @PathVariable  int size){
+    public Result<PageInfo> findPage(@RequestBody(required = false) Spec spec, @PathVariable  int page, @PathVariable  int size){
         //执行搜索
-        PageInfo<Album> pageInfo = albumService.findPage(album, page, size);
+        PageInfo<Spec> pageInfo = specService.findPage(spec, page, size);
         return new Result(true, StatusCode.OK,"查询成功",pageInfo);
     }
 
     /***
-     * Album分页搜索实现
+     * Spec分页搜索实现
      * @param page:当前页
      * @param size:每页显示多少条
      * @return
@@ -47,19 +47,19 @@ public class AlbumController {
     @GetMapping(value = "/search/{page}/{size}" )
     public Result<PageInfo> findPage(@PathVariable  int page, @PathVariable  int size){
         //分页查询
-        PageInfo<Album> pageInfo = albumService.findPage(page, size);
+        PageInfo<Spec> pageInfo = specService.findPage(page, size);
         return new Result<PageInfo>(true,StatusCode.OK,"查询成功",pageInfo);
     }
 
     /***
      * 多条件搜索品牌数据
-     * @param album
+     * @param spec
      * @return
      */
     @PostMapping(value = "/search" )
-    public Result<List<Album>> findList(@RequestBody(required = false)  Album album){
-        List<Album> list = albumService.findList(album);
-        return new Result<List<Album>>(true,StatusCode.OK,"查询成功",list);
+    public Result<List<Spec>> findList(@RequestBody(required = false)  Spec spec){
+        List<Spec> list = specService.findList(spec);
+        return new Result<List<Spec>>(true,StatusCode.OK,"查询成功",list);
     }
 
     /***
@@ -68,56 +68,56 @@ public class AlbumController {
      * @return
      */
     @DeleteMapping(value = "/{id}" )
-    public Result delete(@PathVariable Long id){
-        albumService.delete(id);
+    public Result delete(@PathVariable Integer id){
+        specService.delete(id);
         return new Result(true,StatusCode.OK,"删除成功");
     }
 
     /***
-     * 修改Album数据
-     * @param album
+     * 修改Spec数据
+     * @param spec
      * @param id
      * @return
      */
     @PutMapping(value="/{id}")
-    public Result update(@RequestBody  Album album,@PathVariable Long id){
+    public Result update(@RequestBody  Spec spec,@PathVariable Integer id){
         //设置主键值
-        album.setId(id);
+        spec.setId(id);
         //修改数据
-        albumService.update(album);
+        specService.update(spec);
         return new Result(true,StatusCode.OK,"修改成功");
     }
 
     /***
-     * 新增Album数据
-     * @param album
+     * 新增Spec数据
+     * @param spec
      * @return
      */
     @PostMapping
-    public Result add(@RequestBody   Album album){
-        albumService.add(album);
+    public Result add(@RequestBody   Spec spec){
+        specService.add(spec);
         return new Result(true,StatusCode.OK,"添加成功");
     }
 
     /***
-     * 根据ID查询Album数据
+     * 根据ID查询Spec数据
      * @param id
      * @return
      */
     @GetMapping("/{id}")
-    public Result<Album> findById(@PathVariable Long id){
+    public Result<Spec> findById(@PathVariable Integer id){
         //根据ID查询
-        Album album = albumService.findById(id);
-        return new Result<Album>(true,StatusCode.OK,"查询成功",album);
+        Spec spec = specService.findById(id);
+        return new Result<Spec>(true,StatusCode.OK,"查询成功",spec);
     }
 
     /***
-     * 查询Album全部数据
+     * 查询Spec全部数据
      * @return
      */
     @GetMapping
-    public Result<Album> findAll(){
-        List<Album> list = albumService.findAll();
-        return new Result<Album>(true, StatusCode.OK,"查询成功",list) ;
+    public Result<Spec> findAll(){
+        List<Spec> list = specService.findAll();
+        return new Result<Spec>(true, StatusCode.OK,"查询成功",list) ;
     }
 }
