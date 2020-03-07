@@ -33,7 +33,7 @@ public class FileController {
      * @return
      */
     @PostMapping("/upload")
-    public Result upload(@RequestParam MultipartFile file) {
+    public Result upload(@RequestParam("file") MultipartFile file) {
         try {
             //封装一个FastDFSFile
             FastDFSFile fastDFSFile = new FastDFSFile();
@@ -85,5 +85,18 @@ public class FileController {
             return new Result(false, StatusCode.ERROR, "下载异常", e.getMessage());
         }
 
+    }
+
+    /**
+     * 文件删除
+     * @param groupName
+     * @param fileName
+     * @return
+     */
+    @PostMapping("/delete")
+    public Result delete(@RequestParam String groupName,
+                         @RequestParam String fileName){
+        FastDFSClient.deleteFile(groupName,fileName);
+        return new Result(true, StatusCode.OK, "删除成功");
     }
 }
