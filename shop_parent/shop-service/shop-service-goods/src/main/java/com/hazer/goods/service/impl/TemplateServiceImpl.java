@@ -12,12 +12,10 @@ import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
-/**
- * @ClassName: TemplateServiceImpl
- * @description:
- * @author: Hazer
- * @create: 2020-03-07 00:23
- **/
+/****
+ * @Author: Hazer
+ * @Description:Template业务层接口实现类
+ *****/
 @Service
 public class TemplateServiceImpl implements TemplateService {
 
@@ -80,20 +78,20 @@ public class TemplateServiceImpl implements TemplateService {
         Example.Criteria criteria = example.createCriteria();
         if(template!=null){
             // ID
-            if(!StringUtils.isEmpty(template.getId().toString())){
-                criteria.andEqualTo("id",template.getId());
+            if(!StringUtils.isEmpty(template.getId())){
+                    criteria.andEqualTo("id",template.getId());
             }
             // 模板名称
             if(!StringUtils.isEmpty(template.getName())){
-                criteria.andLike("name","%"+template.getName()+"%");
+                    criteria.andLike("name","%"+template.getName()+"%");
             }
             // 规格数量
-            if(!StringUtils.isEmpty(template.getSpecNum().toString())){
-                criteria.andEqualTo("specNum",template.getSpecNum());
+            if(!StringUtils.isEmpty(template.getSpecNum())){
+                    criteria.andEqualTo("specNum",template.getSpecNum());
             }
             // 参数数量
-            if(!StringUtils.isEmpty(template.getParaNum().toString())){
-                criteria.andEqualTo("paraNum",template.getParaNum());
+            if(!StringUtils.isEmpty(template.getParaNum())){
+                    criteria.andEqualTo("paraNum",template.getParaNum());
             }
         }
         return example;

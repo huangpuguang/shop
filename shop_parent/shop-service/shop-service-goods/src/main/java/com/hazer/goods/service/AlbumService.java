@@ -5,6 +5,10 @@ import com.hazer.goods.pojo.Album;
 
 import java.util.List;
 
+/****
+ * @Author: Hazer
+ * @Description:Album业务层接口
+ *****/
 public interface AlbumService {
 
     /***
@@ -54,7 +58,7 @@ public interface AlbumService {
      * @param id
      * @return
      */
-    Album findById(Long id);
+     Album findById(Long id);
 
     /***
      * 查询所有Album

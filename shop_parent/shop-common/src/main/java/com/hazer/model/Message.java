@@ -1,4 +1,4 @@
-package com.hazer.goods.entity;
+package com.hazer.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;

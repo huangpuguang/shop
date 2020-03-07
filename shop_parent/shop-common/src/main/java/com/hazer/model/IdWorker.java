@@ -1,4 +1,4 @@
-package com.hazer.goods.entity;
+package com.hazer.model;
 
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;

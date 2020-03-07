@@ -5,12 +5,10 @@ import com.hazer.goods.pojo.Para;
 
 import java.util.List;
 
-/**
- * @ClassName: ParaService
- * @description: ${description}
- * @author: Hazer
- * @create: 2020-03-07 00:33
- **/
+/****
+ * @Author: Hazer
+ * @Description:Para业务层接口
+ *****/
 public interface ParaService {
 
     /***
@@ -60,7 +58,7 @@ public interface ParaService {
      * @param id
      * @return
      */
-    Para findById(Integer id);
+     Para findById(Integer id);
 
     /***
      * 查询所有Para

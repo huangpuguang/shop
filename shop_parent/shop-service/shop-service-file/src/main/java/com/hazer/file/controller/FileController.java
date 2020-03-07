@@ -2,8 +2,8 @@ package com.hazer.file.controller;
 
 import com.hazer.file.entity.FastDFSFile;
 import com.hazer.file.utils.FastDFSClient;
-import com.hazer.goods.entity.Result;
-import com.hazer.goods.entity.StatusCode;
+import com.hazer.model.Result;
+import com.hazer.model.StatusCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;

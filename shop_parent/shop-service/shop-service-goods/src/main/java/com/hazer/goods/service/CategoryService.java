@@ -5,12 +5,10 @@ import com.hazer.goods.pojo.Category;
 
 import java.util.List;
 
-/**
- * @ClassName: CategoryService
- * @description: ${description}
- * @author: Hazer
- * @create: 2020-03-07 00:37
- **/
+/****
+ * @Author: Hazer
+ * @Description:Category业务层接口
+ *****/
 public interface CategoryService {
 
     /***
@@ -60,17 +58,11 @@ public interface CategoryService {
      * @param id
      * @return
      */
-    Category findById(Integer id);
+     Category findById(Integer id);
 
     /***
      * 查询所有Category
      * @return
      */
     List<Category> findAll();
-
-    /***
-     * 根据父节点ID查询
-     * @param pid:父节点ID
-     */
-    List<Category> findByParentId(Integer pid);
 }

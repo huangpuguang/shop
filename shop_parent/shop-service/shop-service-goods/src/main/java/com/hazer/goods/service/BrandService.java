@@ -2,61 +2,67 @@ package com.hazer.goods.service;
 
 import com.github.pagehelper.PageInfo;
 import com.hazer.goods.pojo.Brand;
-import io.swagger.models.auth.In;
 
 import java.util.List;
 
-/**
- * @ClassName: BrandService
- * @description: ${description}
- * @author: Hazer
- * @create: 2020-03-05 23:13
- **/
+/****
+ * @Author: Hazer
+ * @Description:Brand业务层接口
+ *****/
 public interface BrandService {
-    /**
-     * 查询所有品牌
-     *
+
+    /***
+     * Brand多条件分页查询
+     * @param brand
+     * @param page
+     * @param size
      * @return
      */
-    List<Brand> findAll();
+    PageInfo<Brand> findPage(Brand brand, int page, int size);
 
-    /**
-     * 根据id查询
-     * @param id
+    /***
+     * Brand分页查询
+     * @param page
+     * @param size
      * @return
      */
-    Brand findById(Integer id);
+    PageInfo<Brand> findPage(int page, int size);
 
-    /**
-     * 条件查询
+    /***
+     * Brand多条件搜索方法
      * @param brand
      * @return
      */
     List<Brand> findList(Brand brand);
 
-    /**
-     * 分页查询
-     * @param brand
-     * @return
+    /***
+     * 删除Brand
+     * @param id
      */
-    PageInfo<Brand> findPage(Brand brand);
+    void delete(Integer id);
 
-    /**
-     * 新增品牌
+    /***
+     * 修改Brand数据
+     * @param brand
+     */
+    void update(Brand brand);
+
+    /***
+     * 新增Brand
      * @param brand
      */
     void add(Brand brand);
 
     /**
-     * 修改品牌
-     * @param brand
-     */
-    void update(Brand brand);
-
-
-    /**
-     * 删除品牌
+     * 根据ID查询Brand
      * @param id
+     * @return
      */
-    void delete (Integer id);
+     Brand findById(Integer id);
+
+    /***
+     * 查询所有Brand
+     * @return
+     */
+    List<Brand> findAll();
 }

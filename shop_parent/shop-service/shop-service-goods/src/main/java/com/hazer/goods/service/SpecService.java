@@ -5,12 +5,10 @@ import com.hazer.goods.pojo.Spec;
 
 import java.util.List;
 
-/**
- * @ClassName: SpecService
- * @description:
- * @author: Hazer
- * @create: 2020-03-07 00:27
- **/
+/****
+ * @Author: Hazer
+ * @Description:Spec业务层接口
+ *****/
 public interface SpecService {
 
     /***
@@ -60,7 +58,7 @@ public interface SpecService {
      * @param id
      * @return
      */
-    Spec findById(Integer id);
+     Spec findById(Integer id);
 
     /***
      * 查询所有Spec

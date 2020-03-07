@@ -1,4 +1,4 @@
-package com.hazer.goods.entity;
+package com.hazer.model;
 
 import org.apache.http.Consts;
 import org.apache.http.HttpEntity;

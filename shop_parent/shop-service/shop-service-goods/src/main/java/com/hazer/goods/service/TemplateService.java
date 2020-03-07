@@ -5,12 +5,10 @@ import com.hazer.goods.pojo.Template;
 
 import java.util.List;
 
-/**
- * @ClassName: TemplateService
- * @description: ${description}
- * @author: Hazer
- * @create: 2020-03-07 00:22
- **/
+/****
+ * @Author: Hazer
+ * @Description:Template业务层接口
+ *****/
 public interface TemplateService {
 
     /***
@@ -60,7 +58,7 @@ public interface TemplateService {
      * @param id
      * @return
      */
-    Template findById(Integer id);
+     Template findById(Integer id);
 
     /***
      * 查询所有Template
