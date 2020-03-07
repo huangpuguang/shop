@@ -3,32 +3,30 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>shop-parent</artifactId>
+        <artifactId>shop-service</artifactId>
         <groupId>hazer.shopping</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
-    <modules>
-        <module>shop-service-goods</module>
-        <module>shop-service-file</module>
-    </modules>
-    <artifactId>shop-service</artifactId>
-    <description>微服务</description>
 
+    <artifactId>shop-service-file</artifactId>
+    <description>文件上传功模块</description>
+
+    <!--依赖包-->
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/net.oschina.zcx7878/fastdfs-client-java -->
         <dependency>
-            <groupId>hazer.shopping</groupId>
-            <artifactId>shop-common-db</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>net.oschina.zcx7878</groupId>
+            <artifactId>fastdfs-client-java</artifactId>
+            <version>1.27.0.0</version>
         </dependency>
 
-        <!--依赖goods-api-->
         <dependency>
             <groupId>hazer.shopping</groupId>
-            <artifactId>shop-service-goods-api</artifactId>
+            <artifactId>shop-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-    </dependencies>
+    </dependencies>    <!--依赖包-->
+
 
 </project>
