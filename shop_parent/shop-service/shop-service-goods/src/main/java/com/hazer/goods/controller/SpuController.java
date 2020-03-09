@@ -1,6 +1,7 @@
 package com.hazer.goods.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.hazer.goods.pojo.Goods;
 import com.hazer.goods.pojo.Spu;
 import com.hazer.goods.service.SpuService;
 import com.hazer.model.Result;
@@ -142,5 +143,102 @@ public class SpuController {
         //调用SpuService实现查询所有Spu
         List<Spu> list = spuService.findAll();
         return new Result<List<Spu>>(true, StatusCode.OK,"查询成功",list) ;
+    }
+
+    /***
+     * 添加Goods
+     * @param goods
+     * @return
+     */
+    @PostMapping("/save")
+    public Result save(@RequestBody Goods goods){
+        spuService.saveGoods(goods);
+        return new Result(true,StatusCode.OK,"保存成功");
+    }
+
+    /***
+     * 根据ID查询Goods
+     * @param id
+     * @return
+     */
+    @GetMapping("/goods/{id}")
+    public Result<Goods> findGoodsById(@PathVariable Long id){
+        //根据ID查询Goods(SPU+SKU)信息
+        Goods goods = spuService.findGoodsById(id);
+        return new Result<Goods>(true,StatusCode.OK,"查询成功",goods);
+    }
+
+    /**
+     * 审核
+     * @param id
+     * @return
+     */
+    @PutMapping("/audit/{id}")
+    public Result audit(@PathVariable Long id){
+        spuService.audit(id);
+        return new Result(true,StatusCode.OK,"审核成功");
+    }
+
+    /**
+     * 下架
+     * @param id
+     * @return
+     */
+    @PutMapping("/pull/{id}")
+    public Result pull(@PathVariable Long id){
+        spuService.pull(id);
+        return new Result(true,StatusCode.OK,"下架成功");
+    }
+
+    /**
+     * 商品上架
+     * @param id
+     * @return
+     */
+    @PutMapping("/put/{id}")
+    public Result put(@PathVariable Long id){
+        spuService.put(id);
+        return new Result(true,StatusCode.OK,"上架成功");
+    }
+
+    /**
+     *  批量上架
+     * @param ids
+     * @return
+     */
+    @PutMapping("/put/many")
+    public Result putMany(@RequestBody Long[] ids){
+        int count = spuService.putMany(ids);
+        return new Result(true,StatusCode.OK,"上架"+count+"个商品");
+    }
+
+
+    /**
+     * //审核商品 自动上架
+     * @param id  spu的ID
+     * @return
+     */
+    @PutMapping("/audit/{id}")
+    public Result auditSpu(@PathVariable(name="id")Long id){
+        spuService.auditSpu(id);
+        return new Result(true,StatusCode.OK,"审核通过");
+    }
+
+    @PutMapping("/pull/{id}")
+    public Result pullSpu(@PathVariable(name="id")Long id){
+        spuService.pullSpu(id);
+        return new Result(true,StatusCode.OK,"下架成功");
+    }
+
+    @DeleteMapping("/logic/delete/{id}")
+    public Result logicDeleteSpu(@PathVariable(name="id")Long id){
+        spuService.logicDeleteSpu(id);
+        return new Result(true,StatusCode.OK,"逻辑删除成功");
+    }
+
+    @PutMapping("/restore/{id}")
+    public Result restore(@PathVariable(name="id")Long id){
+        spuService.restoreSpu(id);
+        return new Result(true,StatusCode.OK,"还原成功");
     }
 }

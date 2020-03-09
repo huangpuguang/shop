@@ -2,12 +2,15 @@ package com.hazer.goods.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.hazer.goods.dao.CategoryMapper;
 import com.hazer.goods.dao.ParaMapper;
+import com.hazer.goods.pojo.Category;
 import com.hazer.goods.pojo.Para;
 import com.hazer.goods.service.ParaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import tk.mybatis.mapper.common.base.select.SelectByPrimaryKeyMapper;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
@@ -21,6 +24,9 @@ public class ParaServiceImpl implements ParaService {
 
     @Autowired
     private ParaMapper paraMapper;
+
+    @Autowired
+    private CategoryMapper categoryMapper;
 
 
     /**
@@ -145,5 +151,20 @@ public class ParaServiceImpl implements ParaService {
     @Override
     public List<Para> findAll() {
         return paraMapper.selectAll();
+    }
+
+    /***
+     * 根据分类ID查询参数列表
+     * @param id
+     * @return
+     */
+    @Override
+    public List<Para> findByCategoryId(Integer id) {
+        //查询分类信息
+        Category category = categoryMapper.selectByPrimaryKey(id);
+        //根据分类的模板ID查询参数列表
+        Para para = new Para();
+        para.setTemplateId(category.getTemplateId());
+        return paraMapper.select(para);
     }
 }

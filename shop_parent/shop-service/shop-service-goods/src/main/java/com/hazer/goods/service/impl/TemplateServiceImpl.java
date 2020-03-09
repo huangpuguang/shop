@@ -2,7 +2,9 @@ package com.hazer.goods.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.hazer.goods.dao.CategoryMapper;
 import com.hazer.goods.dao.TemplateMapper;
+import com.hazer.goods.pojo.Category;
 import com.hazer.goods.pojo.Template;
 import com.hazer.goods.service.TemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +16,16 @@ import java.util.List;
 
 /****
  * @Author: Hazer
- * @Description:Template业务层接口实现类
+ * @Description: Template业务层接口实现类
  *****/
 @Service
 public class TemplateServiceImpl implements TemplateService {
 
     @Autowired
     private TemplateMapper templateMapper;
+
+    @Autowired
+    private CategoryMapper categoryMapper;
 
 
     /**
@@ -141,5 +146,19 @@ public class TemplateServiceImpl implements TemplateService {
     @Override
     public List<Template> findAll() {
         return templateMapper.selectAll();
+    }
+
+    /***
+     * 根据分类ID查询模板信息
+     * @param id
+     * @return
+     */
+    @Override
+    public Template findByCategoryId(Integer id) {
+        //查询分类信息
+        Category category = categoryMapper.selectByPrimaryKey(id);
+
+        //根据模板Id查询模板信息
+        return templateMapper.selectByPrimaryKey(category.getTemplateId());
     }
 }

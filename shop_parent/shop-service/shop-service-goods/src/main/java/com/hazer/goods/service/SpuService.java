@@ -1,6 +1,7 @@
 package com.hazer.goods.service;
 
 import com.github.pagehelper.PageInfo;
+import com.hazer.goods.pojo.Goods;
 import com.hazer.goods.pojo.Spu;
 
 import java.util.List;
@@ -65,4 +66,48 @@ public interface SpuService {
      * @return
      */
     List<Spu> findAll();
+
+    /**
+     * 保存商品
+     * @param goods
+     */
+    void saveGoods(Goods goods);
+
+    /***
+     * 根据SPU的ID查找SPU以及对应的SKU集合
+     * @param spuId
+     */
+    Goods findGoodsById(Long spuId);
+
+    /***
+     * 商品审核
+     * @param spuId
+     */
+    void audit(Long spuId);
+
+    /***
+     * 商品下架
+     * @param spuId
+     */
+    void pull(Long spuId);
+
+    void auditSpu(Long id);
+    /***
+     * 商品上架
+     * @param spuId
+     */
+    void put(Long spuId);
+
+    int putMany(Long[] ids);
+
+    /**
+     * 下架
+     * @param id
+     */
+    void pullSpu(Long id);
+
+    void logicDeleteSpu(Long id);
+    void delete(Long id);
+
+    void restoreSpu(Long id);
 }

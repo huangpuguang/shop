@@ -2,12 +2,15 @@ package com.hazer.goods.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.hazer.goods.dao.CategoryMapper;
 import com.hazer.goods.dao.SpecMapper;
+import com.hazer.goods.pojo.Category;
 import com.hazer.goods.pojo.Spec;
 import com.hazer.goods.service.SpecService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import tk.mybatis.mapper.common.base.select.SelectByPrimaryKeyMapper;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
@@ -21,6 +24,9 @@ public class SpecServiceImpl implements SpecService {
 
     @Autowired
     private SpecMapper specMapper;
+
+    @Autowired
+    private CategoryMapper categoryMapper;
 
 
     /**
@@ -145,5 +151,20 @@ public class SpecServiceImpl implements SpecService {
     @Override
     public List<Spec> findAll() {
         return specMapper.selectAll();
+    }
+
+    /***
+     * 根据分类ID查询规格列表
+     * @param categoryid
+     * @return
+     */
+    @Override
+    public List<Spec> findByCategoryId(Integer categoryid) {
+        //查询分类
+        Category category = categoryMapper.selectByPrimaryKey(categoryid);
+        //根据分类的模板ID查询规格
+        Spec spec = new Spec();
+        spec.setTemplateId(category.getTemplateId());
+        return specMapper.select(spec);
     }
 }
