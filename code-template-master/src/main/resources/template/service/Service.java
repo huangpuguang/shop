@@ -4,7 +4,7 @@ import com.github.pagehelper.PageInfo;
 import java.util.List;
 /****
  * @Author: Hazer
- * @Description:${Table}业务层接口
+ * @Description: ${Table}业务层接口
  *****/
 public interface ${Table}Service {
 

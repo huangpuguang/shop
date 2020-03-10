@@ -5,10 +5,12 @@ import ${package_service}.${Table}Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 import java.util.List;
+
 /****
  * @Author: Hazer
  * @Description:${Table}业务层接口实现类
@@ -92,6 +94,7 @@ public class ${Table}ServiceImpl implements ${Table}Service {
      * 删除
      * @param id
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void delete(${keyType} id){
         ${table}Mapper.deleteByPrimaryKey(id);
@@ -101,6 +104,7 @@ public class ${Table}ServiceImpl implements ${Table}Service {
      * 修改${Table}
      * @param ${table}
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void update(${Table} ${table}){
         ${table}Mapper.updateByPrimaryKey(${table});
@@ -110,6 +114,7 @@ public class ${Table}ServiceImpl implements ${Table}Service {
      * 增加${Table}
      * @param ${table}
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void add(${Table} ${table}){
         ${table}Mapper.insert(${table});

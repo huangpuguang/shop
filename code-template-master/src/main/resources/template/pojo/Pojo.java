@@ -10,7 +10,7 @@ import ${set};
 </#list>
 /****
  * @Author: Hazer
- * @Description:${Table}构建
+ * @Description: ${Table}构建
  *****/
 <#if swagger==true>
 @ApiModel(description = "${Table}",value = "${Table}")
