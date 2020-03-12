@@ -17,6 +17,7 @@
     <modules>
         <module>shop-service-goods-api</module>
         <module>shop-service-content-api</module>
+        <module>shop-service-search-api</module>
     </modules>
     <dependencies>
         <dependency>
