@@ -1,6 +1,7 @@
 package com.hazer.search.dao;
 
 import com.hazer.goods.pojo.Sku;
+import com.hazer.search.pojo.SkuInfo;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +12,6 @@ import org.springframework.stereotype.Repository;
  * @Date 2020/3/13 11:16
  **/
 @Repository
-public interface SkuEsMapper extends ElasticsearchRepository<Sku,Long> {
+public interface SkuEsMapper extends ElasticsearchRepository<SkuInfo,Long> {
 
 }

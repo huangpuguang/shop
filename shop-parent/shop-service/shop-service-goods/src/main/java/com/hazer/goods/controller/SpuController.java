@@ -168,16 +168,7 @@ public class SpuController {
         return new Result<Goods>(true,StatusCode.OK,"查询成功",goods);
     }
 
-    /**
-     * 审核
-     * @param id
-     * @return
-     */
-    @PutMapping("/audit/{id}")
-    public Result audit(@PathVariable Long id){
-        spuService.audit(id);
-        return new Result(true,StatusCode.OK,"审核成功");
-    }
+
 
     /**
      * 下架
@@ -224,11 +215,6 @@ public class SpuController {
         return new Result(true,StatusCode.OK,"审核通过");
     }
 
-    @PutMapping("/pull/{id}")
-    public Result pullSpu(@PathVariable(name="id")Long id){
-        spuService.pullSpu(id);
-        return new Result(true,StatusCode.OK,"下架成功");
-    }
 
     @DeleteMapping("/logic/delete/{id}")
     public Result logicDeleteSpu(@PathVariable(name="id")Long id){

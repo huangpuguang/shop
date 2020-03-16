@@ -2,6 +2,11 @@ package com.hazer.search.pojo;
 
 
 import java.io.Serializable;
+
+import com.hazer.goods.pojo.Sku;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
@@ -17,7 +22,10 @@ import java.util.Map;
  * @Date 2020/3/13 10:44
  **/
 @Document(indexName = "skuInfo",type = "docs")
-public class SkuInfo implements Serializable {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class SkuInfo  implements Serializable {
     //商品id，同时也是商品编号
     @Id
     private Long id;
