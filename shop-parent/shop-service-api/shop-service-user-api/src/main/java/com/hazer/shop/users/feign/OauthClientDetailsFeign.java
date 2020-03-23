@@ -1,7 +1,11 @@
 package com.hazer.shop.users.feign;
+import com.github.pagehelper.PageInfo;
+import com.hazer.shop.users.pojo.OauthClientDetails;
 import entity.Result;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /****
  * @Author: Hazer
