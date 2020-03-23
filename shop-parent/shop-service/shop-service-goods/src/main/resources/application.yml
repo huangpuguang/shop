@@ -4,8 +4,8 @@ spring:
   application:
     name: goods
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/shop_goods?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://122.51.94.168:3306/shop_goods?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: huangpu929
 eureka:
@@ -17,13 +17,10 @@ eureka:
 feign:
   hystrix:
     enabled: true
-mybatis:
-  configuration:
-    map-underscore-to-camel-case: true
-  mapper-locations: classpath:mapper/*Mapper.xml
-  type-aliases-package: com.hazer.goods.pojo
 
-# 日志配置
-logging:
-  level:
-    root: info
+#mybatis的配置 可以不配置  需要整合通用mapper
+#mybatis:
+#  configuration:
+#    map-underscore-to-camel-case: true
+#  mapper-locations: classpath:mapper/*Mapper.xml
+#  type-aliases-package: com.changgou.goods.pojo

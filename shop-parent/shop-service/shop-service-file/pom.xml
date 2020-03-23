@@ -4,29 +4,30 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>shop-service</artifactId>
-        <groupId>hazer.shopping</groupId>
+        <groupId>com.hazer</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>shop-service-file</artifactId>
-    <description>文件上传功模块</description>
 
-    <!--依赖包-->
+    <description>
+        文件微服务(用户文件操作:图片上传)
+    </description>
+
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/net.oschina.zcx7878/fastdfs-client-java -->
+
         <dependency>
             <groupId>net.oschina.zcx7878</groupId>
             <artifactId>fastdfs-client-java</artifactId>
             <version>1.27.0.0</version>
         </dependency>
-
+        
         <dependency>
-            <groupId>hazer.shopping</groupId>
+            <groupId>com.hazer</groupId>
             <artifactId>shop-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-    </dependencies>    <!--依赖包-->
-
+    </dependencies>
 
 </project>
