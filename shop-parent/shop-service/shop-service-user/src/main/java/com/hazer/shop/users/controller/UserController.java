@@ -2,6 +2,7 @@ package com.hazer.shop.users.controller;
 import com.hazer.shop.users.pojo.User;
 import com.hazer.shop.users.service.UserService;
 import com.github.pagehelper.PageInfo;
+import entity.BCrypt;
 import entity.Result;
 import entity.StatusCode;
 import io.swagger.annotations.*;
@@ -140,5 +141,19 @@ public class UserController {
         //调用UserService实现查询所有User
         List<User> list = userService.findAll();
         return new Result<List<User>>(true, StatusCode.OK,"查询成功",list) ;
+    }
+
+    /***
+     * 用户登录
+     */
+    @RequestMapping(value = "/login")
+    public Result login(String username,String password){
+        //查询用户信息
+        User user = userService.findById(username);
+
+        if(user!=null && BCrypt.checkpw(password,user.getPassword())){
+            return new Result(true,StatusCode.OK,"登录成功！",user);
+        }
+        return  new Result(false,StatusCode.LOGINERROR,"账号或者密码错误！");
     }
 }
